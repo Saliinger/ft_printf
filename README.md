@@ -20,7 +20,7 @@ It returns the number of characters printed, like `printf()`.
 | ---------- | ----------------------------------------------------- |
 | `%c`       | a single character                                    |
 | `%s`       | a string (`(null)` if the pointer is `NULL`)          |
-| `%p`       | a `void *` pointer in hexadecimal, prefixed with `0x` |
+| `%p`       | a `void *` pointer in hexadecimal, prefixed with `0x` (`(nil)` if `NULL`) |
 | `%d`       | a signed decimal integer                              |
 | `%i`       | a signed integer in base 10                           |
 | `%u`       | an unsigned decimal integer                           |
@@ -46,7 +46,7 @@ The Makefile first runs `make` in `lib/libft` to build `libft.a`. It then copies
 ### Use
 
 ```c
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 int main(void)
 {
@@ -82,7 +82,7 @@ cc -Wall -Wextra -Werror -Iincludes -Ilib/libft main.c libftprintf.a -o demo
 `ft_selector()` reads the format string once, from left to right:
 
 1. A character that is not `%` is written as is, and the counter goes up by one.
-2. On `%`, it reads the next character and calls the matching handler with the next argument from `va_arg`:
+2. On `%`, it reads the next character. If the format string ends right after the `%`, it stops. Otherwise it passes the character to `ft_convert()`, which calls the matching handler with the next argument from `va_arg`:
    - `c` → `ft_printchar`
    - `s` → `ft_string`
    - `p` → `ft_pointertohex`
@@ -90,7 +90,9 @@ cc -Wall -Wextra -Werror -Iincludes -Ilib/libft main.c libftprintf.a -o demo
    - `u` → `ft_uint`
    - `x`, `X` → `ft_hex`
    - `%` → prints `%`
-3. Each handler returns the number of characters it wrote, and that number is added to the counter.
+3. Each handler returns the number of characters it wrote, and that number is added to the counter. An unknown conversion character prints nothing.
+
+The `va_list` is passed down as a pointer (`va_list *`). Each call to `ft_convert()` takes the next argument with `va_arg`, so every call must continue from where the previous one stopped. Passing a `va_list` by value to a function that is called several times is only guaranteed to work through a pointer.
 
 When the format string ends, `ft_printf()` calls `va_end()` and returns the counter.
 
@@ -100,12 +102,14 @@ Numbers are printed with recursion. To print `n` in base `b`, the function first
 
 The number of characters printed is computed separately, by counting how many times the value can be divided by its base (`ft_countdigit`, `ft_hexcount`, `ft_ptrlen`). Negative numbers count one extra character for the `-` sign. Counting uses a `long`, so `INT_MIN` is handled without overflow.
 
-`%p` reads the argument as a 64-bit unsigned value, prints `0x`, then prints the address in lowercase hexadecimal.
+`%u` reads the argument as an `unsigned int`, so a negative `int` such as `-1` prints as `4294967295`, like `printf()`.
+
+`%p` reads the argument as a 64-bit unsigned value. A `NULL` pointer prints `(nil)`, like glibc's `printf()` on Linux. Any other address prints `0x` followed by the address in lowercase hexadecimal.
 
 ### Why this design
 
 - **No data structure, no allocation.** The output is written straight to standard output with `write`, one character at a time. Nothing is allocated, so nothing can leak. The subject also forbids reproducing `printf()`'s buffer management.
-- **One handler per conversion.** Each conversion lives in its own small file. Adding a conversion means adding one handler and one branch in `ft_selector()`.
+- **One handler per conversion.** Each conversion lives in its own small file. Adding a conversion means adding one handler and one branch in `ft_convert()`.
 - **Recursion for digits.** It is short, easy to explain, and the recursion depth is small: at most 20 calls for a 64-bit value.
 
 ## Resources
@@ -122,7 +126,8 @@ The number of characters printed is computed separately, by counting how many ti
 An AI assistant (Claude) was used for:
 
 - **Makefile:** explaining how the main Makefile can call the libft Makefile with `$(MAKE) -C`, and how to merge `libft.a` into `libftprintf.a`.
-- **Compliance review:** checking the project against the subject, comparing the output with the real `printf()`, and finding an out-of-bounds read when the format string ends with `%`.
+- **Compliance review:** checking the project against the subject on macOS and Linux, comparing the output with the real `printf()`, and finding an out-of-bounds read when the format string ends with `%`.
+- **Fixes:** suggesting the split of `ft_selector()` into `ft_convert()` to respect the Norm, explaining why the `va_list` must be passed as a pointer, and simplifying `ft_uint()` to take an `unsigned int`.
 - **Documentation:** drafting this README.
 
-The `ft_printf` source code was not written by AI.
+The rest of the `ft_printf` source code was written without AI.

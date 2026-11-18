@@ -34,7 +34,7 @@ int		ft_countdigit(long nbr);
 int		ft_decimal(int n);
 
 // Unsigned Int
-int		ft_uint(int value);
+int		ft_uint(unsigned int value);
 int		ft_countdigit_u(unsigned long nbr);
 void	ft_putnbr_u(unsigned long nbr);
 
