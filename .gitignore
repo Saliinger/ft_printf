@@ -1,0 +1,6 @@
+*.o
+libftprintf.a
+.vscode
+.qwen
+.claude
+.DS_Store

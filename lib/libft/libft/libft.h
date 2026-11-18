@@ -6,19 +6,20 @@
 /*   By: anoukan <anoukan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 09:50:46 by anoukan           #+#    #+#             */
-/*   Updated: 2023/11/01 08:27:41 by anoukan          ###   ########.fr       */
+/*   Updated: 2024/12/11 12:02:19 by anoukan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include "../gnl/get_next_line.h"
+# include "../printf/ft_printf.h"
 # include <limits.h>
 # include <stddef.h>
-# include <stdio.h>
+# include <stdint.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdint.h>
 
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
@@ -72,5 +73,12 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
+
+// Custom
+char				*ft_strjoin_frees1(char *s1, char *s2);
+int					ft_strcmp(const char *s1, const char *s2);
+char				*ft_strcat(char *dst, const char *src);
+char				*ft_strcpy(char *dst, const char *src);
+char				*ft_strndup(const char *s, size_t n);
 
 #endif

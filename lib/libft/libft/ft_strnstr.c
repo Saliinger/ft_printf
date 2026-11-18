@@ -6,13 +6,13 @@
 /*   By: anoukan <anoukan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:06:01 by anoukan           #+#    #+#             */
-/*   Updated: 2023/11/15 14:47:29 by anoukan          ###   ########.fr       */
+/*   Updated: 2023/11/01 09:11:09 by anoukan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_strnstr_2(char *cstr, char *cto_find, size_t len)
+char	*ft_strnstr_2(char *cstr, char *cto_find, size_t len)
 {
 	size_t	i;
 	size_t	j;

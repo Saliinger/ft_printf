@@ -1,48 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anoukan <anoukan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 0005/10/20 10:07:55 by noukan            #+#    #+#             */
-/*   Updated: 2023/10/30 13:28:15 by anoukan          ###   ########.fr       */
+/*   Created: 2025/04/17 01:44:19 by anoukan           #+#    #+#             */
+/*   Updated: 2025/04/17 01:44:20 by anoukan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
 
-static	char	*ft_strcpy(char *dest, char *src)
+char	*ft_strndup(const char *s, size_t n)
 {
-	int	i;
-
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dest[i] = src[i];
-		++i;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
+	char	*dup;
 	size_t	i;
-	size_t	j;
-	char	*d;
 
-	if (!s1 || !s2)
+	if (!s)
 		return (NULL);
-	i = ft_strlen(s1);
-	j = ft_strlen(s2);
-	d = (char *)malloc(i + j + 1);
-	if (d == NULL)
+	dup = (char *)malloc(sizeof(char) * (n + 1));
+	if (!dup)
 		return (NULL);
-	ft_strcpy(d, (char *)s1);
-	ft_strcpy(d + i, (char *)s2);
-	return (d);
+	i = 0;
+	while (i < n && s[i])
+	{
+		dup[i] = s[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
 }

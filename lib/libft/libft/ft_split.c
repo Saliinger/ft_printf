@@ -6,7 +6,7 @@
 /*   By: anoukan <anoukan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0005/10/20 13:45:58 by noukan            #+#    #+#             */
-/*   Updated: 01/11/2023 17:10:26 by anoukan          ###   ########.fr       */
+/*   Updated: 2023/10/30 17:17:05 by anoukan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,12 @@ static int	ft_split_write(char **dest, char const *s, char c)
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] != c || s[i] != '\0')
+		if ((s[i] == c || s[i] == '\0') == 1)
 			i++;
 		else
 		{
 			j = 0;
-			while (s[i + j] != c || s[i + j] != '\0')
+			while ((s[i + j] == c || s[i + j] == '\0') == 0)
 				j++;
 			dest[word] = (char *)ft_calloc(sizeof(char), (j + 1));
 			if (!dest)

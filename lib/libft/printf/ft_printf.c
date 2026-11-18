@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anoukan <anoukan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 0007/10/20 15:14:35 by noukan            #+#    #+#             */
-/*   Updated: 2023/11/15 13:59:19 by anoukan          ###   ########.fr       */
+/*   Created: 0003/11/20 13:05:51 by noukan            #+#    #+#             */
+/*   Updated: 2023/11/14 15:24:59 by anoukan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <unistd.h>
+#include "ft_printf.h"
 
-void	ft_putchar_fd(char c, int fd)
+int	ft_printf(const char *format, ...)
 {
-	write(fd, &c, 1);
+	va_list	args;
+	int		count;
+
+	va_start(args, format);
+	count = 0;
+	ft_selector(format, args, &count);
+	va_end(args);
+	return (count);
 }
