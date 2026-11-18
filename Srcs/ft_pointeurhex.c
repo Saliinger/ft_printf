@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pointeurhex.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anoukan <anoukan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alnoukan <alnoukan@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 12:14:14 by anoukan           #+#    #+#             */
-/*   Updated: 2023/11/14 10:52:27 by anoukan          ###   ########.fr       */
+/*   Created: 2026/11/18 08:39:12 by alnoukan          #+#    #+#             */
+/*   Updated: 2026/11/18 08:39:12 by alnoukan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
