@@ -6,7 +6,7 @@
 /*   By: alnoukan <alnoukan@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 08:39:55 by alnoukan          #+#    #+#             */
-/*   Updated: 2026/11/18 10:51:41 by alnoukan         ###   ########.fr       */
+/*   Updated: 2026/11/18 11:06:18 by alnoukan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	ft_convert(char c, va_list *args)
 	return (0);
 }
 
-void	ft_selector(const char *format, va_list args, int *count)
+void	ft_selector(const char *format, va_list *args, int *count)
 {
 	while (*format)
 	{
@@ -40,7 +40,7 @@ void	ft_selector(const char *format, va_list args, int *count)
 			++format;
 			if (!*format)
 				break ;
-			*count += ft_convert(*format, &args);
+			*count += ft_convert(*format, args);
 		}
 		else
 			*count += ft_printchar(*format);

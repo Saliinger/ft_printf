@@ -6,7 +6,7 @@
 /*   By: alnoukan <alnoukan@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 08:39:31 by alnoukan          #+#    #+#             */
-/*   Updated: 2026/11/18 10:34:55 by alnoukan         ###   ########.fr       */
+/*   Updated: 2026/11/18 11:06:25 by alnoukan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_printf(const char *format, ...)
 
 	va_start(args, format);
 	count = 0;
-	ft_selector(format, args, &count);
+	ft_selector(format, &args, &count);
 	va_end(args);
 	return (count);
 }
