@@ -1,15 +1,22 @@
 NAME      = libftprintf.a
 CC        = cc
-CFLAGS    = -Wall -Wextra -Werror -g3 #-fsanitize=address
+CFLAGS    = -Wall -Wextra -Werror
 
 LIBFT_DIR = lib/libft
 LIBFT     = $(LIBFT_DIR)/libft.a
 
-SRC_DIR   = srcs
-SRCS      = ft_countdigit.c ft_decimal.c ft_hex.c ft_pointeurhex.c \
-            ft_printchar.c ft_printf.c ft_putnbr_u.c ft_putstr.c \
-            ft_selector.c ft_string.c ft_uint.c
-OBJS      = $(addprefix $(SRC_DIR)/, $(SRCS:.c=.o))
+SRCS      =		srcs/ft_countdigit.c \
+			 	srcs/ft_decimal.c \
+			 	srcs/ft_hex.c \
+			 	srcs/ft_pointeurhex.c \
+            	srcs/ft_printchar.c \
+				srcs/ft_printf.c \
+				srcs/ft_putnbr_u.c \
+				srcs/ft_putstr.c \
+            	srcs/ft_selector.c \
+			 	srcs/ft_string.c \
+			  	srcs/ft_uint.c 
+OBJS      = $(SRCS:.c=.o)
 
 INC       = -Iincludes -I$(LIBFT_DIR)
 
