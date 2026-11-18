@@ -1,6 +1,6 @@
 NAME      = libftprintf.a
 CC        = cc
-CFLAGS    = -Wall -Wextra -Werror
+CFLAGS    = -Wall -Wextra -Werror -g3 #-fsanitize=address
 
 LIBFT_DIR = lib/libft
 LIBFT     = $(LIBFT_DIR)/libft.a
@@ -22,7 +22,7 @@ $(NAME): $(LIBFT) $(OBJS)
 	cp $(LIBFT) $(NAME)
 	ar rcs $(NAME) $(OBJS)
 
-$(SRC_DIR)/%.o: $(SRC_DIR)/%.c includes/ft_printf.h
+$(SRC_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 clean:

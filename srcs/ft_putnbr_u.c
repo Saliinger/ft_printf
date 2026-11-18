@@ -6,11 +6,11 @@
 /*   By: alnoukan <alnoukan@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 08:39:37 by alnoukan          #+#    #+#             */
-/*   Updated: 2026/11/18 08:39:38 by alnoukan         ###   ########.fr       */
+/*   Updated: 2026/11/18 10:34:55 by alnoukan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 void	ft_putnbr_u(unsigned long nbr)
 {

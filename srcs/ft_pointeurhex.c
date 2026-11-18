@@ -6,11 +6,11 @@
 /*   By: alnoukan <alnoukan@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 08:39:12 by alnoukan          #+#    #+#             */
-/*   Updated: 2026/11/18 08:39:12 by alnoukan         ###   ########.fr       */
+/*   Updated: 2026/11/18 10:43:45 by alnoukan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 void	ft_printptr(uintptr_t ptr)
 {
@@ -33,11 +33,11 @@ int	ft_pointertohex(unsigned long long ptr)
 	int	i;
 
 	i = 0;
-	i += ft_putstr("0x");
 	if (ptr == 0)
-		i += ft_printchar('0');
+		i += ft_putstr("(nil)");
 	else
 	{
+		i += ft_putstr("0x");
 		ft_printptr(ptr);
 		i += ft_ptrlen(ptr);
 	}

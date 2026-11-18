@@ -6,11 +6,11 @@
 /*   By: alnoukan <alnoukan@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 08:39:55 by alnoukan          #+#    #+#             */
-/*   Updated: 2026/11/18 08:39:56 by alnoukan         ###   ########.fr       */
+/*   Updated: 2026/11/18 10:37:17 by alnoukan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 void	ft_selector(const char *format, va_list args, int *count)
 {
@@ -19,6 +19,8 @@ void	ft_selector(const char *format, va_list args, int *count)
 		if (*format == '%')
 		{
 			++format;
+			if (!*format)
+				break ;
 			if (*format == 'd' || *format == 'i')
 				*count += ft_decimal(va_arg(args, int));
 			else if (*format == 's')

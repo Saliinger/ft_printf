@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by alnoukan.*
+_This project has been created as part of the 42 curriculum by alnoukan._
 
 # ft_printf
 
@@ -16,17 +16,17 @@ It returns the number of characters printed, like `printf()`.
 
 ### Supported conversions
 
-| Conversion | Prints |
-|------------|--------|
-| `%c` | a single character |
-| `%s` | a string (`(null)` if the pointer is `NULL`) |
-| `%p` | a `void *` pointer in hexadecimal, prefixed with `0x` |
-| `%d` | a signed decimal integer |
-| `%i` | a signed integer in base 10 |
-| `%u` | an unsigned decimal integer |
-| `%x` | an unsigned integer in lowercase hexadecimal |
-| `%X` | an unsigned integer in uppercase hexadecimal |
-| `%%` | a percent sign |
+| Conversion | Prints                                                |
+| ---------- | ----------------------------------------------------- |
+| `%c`       | a single character                                    |
+| `%s`       | a string (`(null)` if the pointer is `NULL`)          |
+| `%p`       | a `void *` pointer in hexadecimal, prefixed with `0x` |
+| `%d`       | a signed decimal integer                              |
+| `%i`       | a signed integer in base 10                           |
+| `%u`       | an unsigned decimal integer                           |
+| `%x`       | an unsigned integer in lowercase hexadecimal          |
+| `%X`       | an unsigned integer in uppercase hexadecimal          |
+| `%%`       | a percent sign                                        |
 
 Buffer management, flags, field width and precision are not implemented.
 
@@ -46,7 +46,7 @@ The Makefile first runs `make` in `lib/libft` to build `libft.a`. It then copies
 ### Use
 
 ```c
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int main(void)
 {
