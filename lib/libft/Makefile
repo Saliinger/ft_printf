@@ -1,48 +1,74 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: anoukan <anoukan@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/06/15 18:27:25 by anoukan           #+#    #+#              #
-#    Updated: 2024/06/15 18:27:45 by anoukan          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME = libft.a
+CC = cc
+AR = ar rcs
+CFLAGS = -Wall -Wextra -Werror
 
-.PHONY: all libft printf GNL clean fclean re move_libs
+SRC = ft_atoi.c \
+	ft_bzero.c \
+	ft_calloc.c \
+	ft_isalnum.c \
+	ft_isalpha.c \
+	ft_isascii.c \
+	ft_isdigit.c \
+	ft_isprint.c \
+	ft_itoa.c \
+	ft_lstadd_back.c \
+	ft_lstadd_front.c \
+	ft_lstclear.c \
+	ft_lstdelone.c \
+	ft_lstiter.c \
+	ft_lstlast.c \
+	ft_lstmap.c \
+	ft_lstnew.c \
+	ft_lstsize.c \
+	ft_memchr.c \
+	ft_memcmp.c \
+	ft_memcpy.c \
+	ft_memmove.c \
+	ft_memset.c \
+	ft_putchar_fd.c \
+	ft_putendl_fd.c \
+	ft_putnbr_fd.c \
+	ft_putstr_fd.c \
+	ft_split.c \
+	ft_strchr.c \
+	ft_strdup.c \
+	ft_striteri.c \
+	ft_strjoin.c \
+	ft_strlcat.c \
+	ft_strlcpy.c \
+	ft_strlen.c \
+	ft_strmapi.c \
+	ft_strncmp.c \
+	ft_strnstr.c \
+	ft_strrchr.c \
+	ft_strtrim.c \
+	ft_substr.c \
+	ft_tolower.c \
+	ft_toupper.c
 
-all: create_dir libft printf GNL
+OBJ = $(SRC:.c=.o)
+TEST_SRC = $(wildcard tests/*.c)
 
-create_dir:
-	@mkdir -p compiled
+all: $(NAME)
 
-libft:
-	@echo "Compiling in libft"
-	@$(MAKE) -C ./libft
-	@cp ./libft/libft.a compiled/
+$(NAME): $(OBJ)
+	rm -f $@
+	$(AR) $@ $^
 
-printf:
-	@echo "Compiling in printf"
-	@$(MAKE) -C ./printf
-	@cp ./printf/libprintf.a compiled/
+%.o: %.c libft.h
+	$(CC) $(CFLAGS) -c $< -o $@
 
-GNL:
-	@echo "Compiling in GNL"
-	@$(MAKE) -C ./gnl
-	@cp ./gnl/libgnl.a compiled/
-
+test: all
+	$(CC) $(CFLAGS) -I. -o test_libft $(TEST_SRC) $(NAME)
+	./test_libft
 
 clean:
-	@$(MAKE) -C ./libft clean
-	@$(MAKE) -C ./printf clean
-	@$(MAKE) -C ./gnl clean
-	@rm -rf compiled
+	rm -f $(OBJ)
 
-fclean:
-	@$(MAKE) -C ./libft fclean
-	@$(MAKE) -C ./printf fclean
-	@$(MAKE) -C ./gnl fclean
-	@rm -rf compiled
+fclean: clean
+	rm -f $(NAME) test_libft
 
 re: fclean all
+
+.PHONY: all clean fclean re test

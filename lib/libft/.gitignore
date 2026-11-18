@@ -1,3 +1,5 @@
 *.o
-./compiled
 *.a
+test_libft
+a.out
+.qwen/
