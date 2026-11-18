@@ -6,14 +6,14 @@
 /*   By: alnoukan <alnoukan@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 08:42:00 by alnoukan          #+#    #+#             */
-/*   Updated: 2026/11/18 08:42:00 by alnoukan         ###   ########.fr       */
+/*   Updated: 2026/11/18 08:45:53 by alnoukan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "../lib//libft/libft/libft.h"
+# include "../lib/libft/libft.h"
 # include <limits.h>
 # include <stdarg.h>
 # include <stdio.h>
